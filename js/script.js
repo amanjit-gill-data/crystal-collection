@@ -1,4 +1,4 @@
-fetch("../data/crystals.csv")
+fetch("data/crystals.csv")
   .then(
     function(response) {
       return response.text();
