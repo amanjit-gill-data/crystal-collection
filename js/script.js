@@ -1,3 +1,5 @@
+// source: https://wickedev.com/javascript-to-parse-a-csv-file-and-convert-it-into-an-html-table/
+
 fetch("data/crystals.csv")
   .then(
     function(response) {
