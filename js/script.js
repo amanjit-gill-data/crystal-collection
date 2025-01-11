@@ -22,31 +22,40 @@ function tsv_string_to_table(tsv_string, table_element) {
   var table_rows = '';
   var table_header = '';
 
+  // create markup string for each row; add it to table markup 
   rows.forEach(function(row, row_index) {
     
     var table_columns = '';
+    var image_file = "";
+    var image_markup = "";
     
     // split row into columns
     var columns = row.split("\t"); 
-    
+   
+    // create markup string for each column; add it to row markup
     columns.forEach(function(column, column_index) {
-        table_columns += row_index == 0 ? '<th>' + column + '</th>' : '<td>' + column + '</td>';
+      table_columns += row_index == 0 ? '<th>' + column + '</th>' : '<td>' + column + '</td>';
+      
+      if (column_index == 0 && row_index != 0) {
+        image_file = "images/" + column.toLowerCase().trim() + ".jpg"
+        image_markup = "<td>" + "<img src=\"" + image_file + "\" width=\"150\">" + "</td>";  
+      }
     });
     
     if (row_index == 0) {
-        table_header += '<tr>' + table_columns + '</tr>';
+      table_header += '<tr>' + table_columns + "<th>Image</th>" + '</tr>';
     } else {
-        table_rows += '<tr>' + table_columns + '</tr>';
+      table_rows += '<tr>' + table_columns + image_markup + '</tr>';
     }
   });
 
   table += '<table>';
-      table += '<thead>';
-          table += table_header;
-      table += '</thead>';
-      table += '<tbody>';
-          table += table_rows;
-      table += '</tbody>';
+    table += '<thead>';
+      table += table_header;
+    table += '</thead>';
+    table += '<tbody>';
+      table += table_rows;
+    table += '</tbody>';
   table += '</table>';
 
   table_element.innerHTML += table;
