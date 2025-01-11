@@ -1,0 +1,32 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  color: #4078a5;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+section, header {
+  margin: 0.5rem;
+}
+
+table * {
+  border: 1px solid #1E90FF;
+  padding: 0.3rem;
+  white-space: nowrap;
+}
+
+th {
+  color: #396a93;
+  font-size: 1.2rem;
+  font-weight: 900;
+}
+
+td:first-child {
+  color: #325d81;
+  font-weight: 600;
+}
+
+

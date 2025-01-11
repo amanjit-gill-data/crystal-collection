@@ -1,6 +1,6 @@
 // source: https://wickedev.com/javascript-to-parse-a-csv-file-and-convert-it-into-an-html-table/
 
-fetch("data/crystals.csv")
+fetch("data/crystals.tsv")
   .then(
     function(response) {
       return response.text();
@@ -9,14 +9,14 @@ fetch("data/crystals.csv")
   .then(
     function(data) {
       var table_element = document.getElementById("crystal-table");
-      csv_string_to_table(data, table_element);
+      tsv_string_to_table(data, table_element);
     }
   );
 
-function csv_string_to_table(csv_string, table_element) {
+function tsv_string_to_table(tsv_string, table_element) {
   
   // Regex to split into rows
-  var rows = csv_string.trim().split(/\r?\n|\r/); 
+  var rows = tsv_string.trim().split(/\r?\n|\r/); 
   
   var table = '';
   var table_rows = '';
@@ -27,7 +27,7 @@ function csv_string_to_table(csv_string, table_element) {
     var table_columns = '';
     
     // split row into columns
-    var columns = row.split(','); 
+    var columns = row.split("\t"); 
     
     columns.forEach(function(column, column_index) {
         table_columns += row_index == 0 ? '<th>' + column + '</th>' : '<td>' + column + '</td>';
